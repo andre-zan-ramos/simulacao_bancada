@@ -45,13 +45,16 @@ if excluir:
 
 @st.fragment()
 def tabelas(df_candidatos):
-    total = df_candidatos["Votos"].sum()
+    total = '{:n}'.format(df_candidatos["Votos"].sum())
+
+    formatado = df_candidatos.copy()
+    formatado['Votos'] = formatado['Votos'].map('{:n}'.format)
 
     bu = st.data_editor(
-        df_candidatos, use_container_width=True, num_rows=tipo_tabela, hide_index=True)
+        formatado, use_container_width=True, num_rows=tipo_tabela, hide_index=True)
 
     a, b = st.columns([2, 1])
-    b.info(f'**Total:** {"{:n}".format(total)}')
+    b.info(f'**Total:** {total}')
 
     return bu
 
