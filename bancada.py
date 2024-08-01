@@ -51,7 +51,7 @@ def tabelas(df_candidatos):
         df_candidatos, use_container_width=True, num_rows=tipo_tabela, hide_index=True)
 
     a, b = st.columns([2, 1])
-    b.info(f'**Total:** {'{:n}'.format(total)}')
+    b.info(f'**Total:** {"{:n}".format(total)}')
 
     return bu
 
